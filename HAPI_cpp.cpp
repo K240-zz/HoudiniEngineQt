@@ -521,7 +521,7 @@ bool Engine::initialize( const char * otl_search_path,
                     use_cooking_thread,
                     cooking_thread_stack_size );
 
-#if !define( INIT_CHECK_BY_HAPI )
+#if !defined( INIT_CHECK_BY_HAPI )
         if (  mResult == HAPI_RESULT_SUCCESS )
             mInitialized = true;
 #endif
@@ -537,7 +537,7 @@ void Engine::cleanup()
     if ( isInitialize() )
     {
         mResult = HAPI_Cleanup();
-#if !define( INIT_CHECK_BY_HAPI )
+#if !defined( INIT_CHECK_BY_HAPI )
         mInitialized = false;
 #endif
     }
@@ -545,7 +545,7 @@ void Engine::cleanup()
 
 bool    Engine::isInitialize()
 {
-#if define( INIT_CHECK_BY_HAPI )
+#if defined( INIT_CHECK_BY_HAPI )
     mResult = HAPI_IsInitialized();
     return mResult == HAPI_RESULT_SUCCESS;
 #else
